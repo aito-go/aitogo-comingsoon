@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AitoGo – Tulossa pian</title>
   <style>
     body {
@@ -16,73 +16,82 @@
       align-items: center;
       height: 100vh;
       text-align: center;
-      flex-direction: column;
-    }
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .logo {
-      width: 50px;
-      height: auto;
     }
     .container {
-      max-width: 600px;
+      max-width: 700px;
       padding: 2rem;
     }
     h1 {
       font-size: 2.5rem;
       color: #0066cc;
-      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .logo {
+      width: 60px;
+      height: auto;
+      filter: sepia(1) hue-rotate(15deg) saturate(5);
     }
     p {
       font-size: 1.2rem;
     }
-    select {
-      margin-top: 1.5rem;
-      padding: 0.5rem;
+    .lang-switcher {
+      margin-bottom: 1rem;
+    }
+    .lang-switcher button {
+      margin: 0 0.5rem;
+      padding: 0.4rem 0.8rem;
       font-size: 1rem;
+      border: none;
+      background-color: #0066cc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .lang-switcher button:hover {
+      background-color: #004d99;
     }
   </style>
+  <script>
+    function setLanguage(lang) {
+      const fi = document.getElementById("fi-content");
+      const en = document.getElementById("en-content");
+      if (lang === "fi") {
+        fi.style.display = "block";
+        en.style.display = "none";
+      } else {
+        fi.style.display = "none";
+        en.style.display = "block";
+      }
+    }
+    window.onload = () => setLanguage("fi");
+  </script>
 </head>
 <body>
-  <div class="header">
-    <img src="Logo.jpg.jpg" alt="AitoGo Logo" class="logo">
-    <h1>AitoGo.com</h1>
-  </div>
   <div class="container">
-    <p id="line1">Verkkosivumme on parhaillaan työn alla.</p>
-    <p id="line2">Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
-    <p id="line3">Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
+    <div class="lang-switcher">
+      <button onclick="setLanguage('fi')">FI</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
 
-    <select id="languageSelect">
-      <option value="fi">Suomeksi</option>
-      <option value="en">In English</option>
-    </select>
+    <h1>
+      <img src="Logo.jpg.jpg" alt="AitoGo Logo" class="logo" />
+      AitoGo.com
+    </h1>
+
+    <div id="fi-content">
+      <p>Verkkosivumme on parhaillaan työn alla.</p>
+      <p>Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
+      <p>Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
+    </div>
+
+    <div id="en-content" style="display: none;">
+      <p>Our website is currently under construction.</p>
+      <p>Soon we will serve B2B clients worldwide. You're welcome to follow our journey!</p>
+      <p>Contact us: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
+    </div>
   </div>
-
-  <script>
-    const translations = {
-      fi: {
-        line1: "Verkkosivumme on parhaillaan työn alla.",
-        line2: "Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!",
-        line3: 'Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a>'
-      },
-      en: {
-        line1: "Our website is currently under construction.",
-        line2: "We’ll soon serve B2B clients globally. Stay tuned!",
-        line3: 'Contact us: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a>'
-      }
-    };
-
-    document.getElementById('languageSelect').addEventListener('change', function() {
-      const lang = this.value;
-      document.getElementById('line1').innerHTML = translations[lang].line1;
-      document.getElementById('line2').innerHTML = translations[lang].line2;
-      document.getElementById('line3').innerHTML = translations[lang].line3;
-    });
-  </script>
 </body>
 </html>
