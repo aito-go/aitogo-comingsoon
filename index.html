@@ -1,61 +1,88 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AitoGo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AitoGo – Tulossa pian</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 2rem;
       margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
       background: #f7f7f7;
       color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
     }
-    header {
+    .header {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 1rem;
       margin-bottom: 2rem;
     }
-    img.logo {
-      height: 60px;
+    .logo {
+      width: 50px;
+      height: auto;
     }
-    #language-selector {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+    .container {
+      max-width: 600px;
+      padding: 2rem;
     }
-    a {
+    h1 {
+      font-size: 2.5rem;
       color: #0066cc;
+      margin: 0;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    select {
+      margin-top: 1.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
-  <div id="language-selector">
-    <button onclick="setLanguage('fi')">🇫🇮</button>
-    <button onclick="setLanguage('en')">🇬🇧</button>
+  <div class="header">
+    <img src="Logo.jpg" alt="AitoGo Logo" class="logo">
+    <h1>AitoGo.com</h1>
+  </div>
+  <div class="container">
+    <p id="line1">Verkkosivumme on parhaillaan työn alla.</p>
+    <p id="line2">Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
+    <p id="line3">Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
+
+    <select id="languageSelect">
+      <option value="fi">Suomeksi</option>
+      <option value="en">In English</option>
+    </select>
   </div>
 
-  <header>
-    <img src="logo.jpg" alt="AitoGo logo" class="logo" />
-    <h1>AitoGo.com</h1>
-  </header>
-
-  <main>
-    <p id="message-fi">Verkkosivumme on parhaillaan työn alla.<br>Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
-    <p id="message-en" style="display: none;">Our website is currently under construction.<br>We will soon serve B2B clients around the world. Welcome to follow our journey!</p>
-
-    <p>Ota yhteyttä / Contact us: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
-  </main>
-
   <script>
-    function setLanguage(lang) {
-      document.getElementById('message-fi').style.display = lang === 'fi' ? 'block' : 'none';
-      document.getElementById('message-en').style.display = lang === 'en' ? 'block' : 'none';
-    }
+    const translations = {
+      fi: {
+        line1: "Verkkosivumme on parhaillaan työn alla.",
+        line2: "Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!",
+        line3: 'Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a>'
+      },
+      en: {
+        line1: "Our website is currently under construction.",
+        line2: "We’ll soon serve B2B clients globally. Stay tuned!",
+        line3: 'Contact us: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a>'
+      }
+    };
+
+    document.getElementById('languageSelect').addEventListener('change', function() {
+      const lang = this.value;
+      document.getElementById('line1').innerHTML = translations[lang].line1;
+      document.getElementById('line2').innerHTML = translations[lang].line2;
+      document.getElementById('line3').innerHTML = translations[lang].line3;
+    });
   </script>
 </body>
 </html>
