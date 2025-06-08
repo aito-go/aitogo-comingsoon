@@ -3,99 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AitoGo – Coming Soon</title>
+  <title>AitoGo – Tulossa pian</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
       background: #f7f7f7;
       color: #333;
-      text-align: center;
     }
     header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem 1rem 0 1rem;
-      flex-wrap: wrap;
+      padding: 1rem 2rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     header img {
-      height: 60px;
+      height: 50px;
+      margin-right: 1rem;
+      filter: hue-rotate(30deg) saturate(1.5); /* Muuttaa logon oranssiksi */
     }
-    .title {
+    header .title {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
     }
-    .title h1 {
+    header .title h1 {
       margin: 0;
-      font-size: 2rem;
-      color: #ff6600;
+      color: #004080; /* Tummansininen teksti */
+      font-size: 1.8rem;
     }
-    .title span {
-      font-size: 1rem;
+    header .title small {
       color: #666;
+      font-size: 0.9rem;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
     }
     .container {
       max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem;
+      margin: 3rem auto;
+      padding: 2rem;
+      text-align: center;
     }
-    .language-switch {
-      margin-bottom: 1rem;
+    .container p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
     }
-    .language-switch select {
+    select {
       padding: 0.5rem;
       font-size: 1rem;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+  <div class="lang-toggle">
+    <select onchange="changeLang(this.value)">
+      <option value="fi">Suomi</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
   <header>
-    <img src="Logo.jpg.jpg" alt="AitoGo logo" />
+    <img src="Logo.jpg.jpg" alt="Logo" />
     <div class="title">
       <h1>AitoGo</h1>
-      <span>Aito-Go.com</span>
+      <small>Aito-Go.com</small>
     </div>
   </header>
 
   <div class="container">
-    <div class="language-switch">
-      <label for="lang">Kieli / Language: </label>
-      <select id="lang" onchange="switchLanguage(this.value)">
-        <option value="fi">Suomi</option>
-        <option value="en">English</option>
-      </select>
-    </div>
-
-    <div id="content-fi">
-      <p>Verkkosivumme on parhaillaan työn alla.</p>
-      <p>Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
-      <p>Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
-    </div>
-
-    <div id="content-en" style="display: none;">
-      <p>Our website is currently under construction.</p>
-      <p>We’ll soon be serving B2B customers around the world. Stay tuned and follow our journey!</p>
-      <p>Contact us: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
-    </div>
+    <p id="line1">Verkkosivumme on parhaillaan työn alla.</p>
+    <p id="line2">Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
+    <p id="line3">Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
   </div>
 
   <script>
-    function switchLanguage(lang) {
-      document.getElementById('content-fi').style.display = lang === 'fi' ? 'block' : 'none';
-      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+    const content = {
+      fi: {
+        line1: "Verkkosivumme on parhaillaan työn alla.",
+        line2: "Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!",
+        line3: "Ota yhteyttä: <a href='mailto:aitogo.info@gmail.com'>aitogo.info@gmail.com</a>"
+      },
+      en: {
+        line1: "Our website is currently under construction.",
+        line2: "We’ll soon serve B2B clients around the world. Stay tuned!",
+        line3: "Contact us: <a href='mailto:aitogo.info@gmail.com'>aitogo.info@gmail.com</a>"
+      }
+    };
+    function changeLang(lang) {
+      document.getElementById("line1").innerText = content[lang].line1;
+      document.getElementById("line2").innerText = content[lang].line2;
+      document.getElementById("line3").innerHTML = content[lang].line3;
     }
   </script>
 </body>
