@@ -2,96 +2,101 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AitoGo – Tulossa pian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AitoGo – Coming Soon</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
       background: #f7f7f7;
       color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       text-align: center;
     }
-    .container {
-      max-width: 700px;
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #0066cc;
+    header {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 1rem;
+      padding: 2rem 1rem 0 1rem;
+      flex-wrap: wrap;
     }
-    .logo {
-      width: 60px;
-      height: auto;
-      filter: sepia(1) hue-rotate(15deg) saturate(5);
+    header img {
+      height: 60px;
+    }
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .title h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #ff6600;
+    }
+    .title span {
+      font-size: 1rem;
+      color: #666;
+    }
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .language-switch {
+      margin-bottom: 1rem;
+    }
+    .language-switch select {
+      padding: 0.5rem;
+      font-size: 1rem;
     }
     p {
       font-size: 1.2rem;
     }
-    .lang-switcher {
-      margin-bottom: 1rem;
+    a {
+      color: #0066cc;
+      text-decoration: none;
     }
-    .lang-switcher button {
-      margin: 0 0.5rem;
-      padding: 0.4rem 0.8rem;
-      font-size: 1rem;
-      border: none;
-      background-color: #0066cc;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .lang-switcher button:hover {
-      background-color: #004d99;
+    a:hover {
+      text-decoration: underline;
     }
   </style>
-  <script>
-    function setLanguage(lang) {
-      const fi = document.getElementById("fi-content");
-      const en = document.getElementById("en-content");
-      if (lang === "fi") {
-        fi.style.display = "block";
-        en.style.display = "none";
-      } else {
-        fi.style.display = "none";
-        en.style.display = "block";
-      }
-    }
-    window.onload = () => setLanguage("fi");
-  </script>
 </head>
 <body>
+  <header>
+    <img src="Logo.jpg.jpg" alt="AitoGo logo" />
+    <div class="title">
+      <h1>AitoGo</h1>
+      <span>Aito-Go.com</span>
+    </div>
+  </header>
+
   <div class="container">
-    <div class="lang-switcher">
-      <button onclick="setLanguage('fi')">FI</button>
-      <button onclick="setLanguage('en')">EN</button>
+    <div class="language-switch">
+      <label for="lang">Kieli / Language: </label>
+      <select id="lang" onchange="switchLanguage(this.value)">
+        <option value="fi">Suomi</option>
+        <option value="en">English</option>
+      </select>
     </div>
 
-    <h1>
-      <img src="Logo.jpg.jpg" alt="AitoGo Logo" class="logo" />
-      AitoGo.com
-    </h1>
-
-    <div id="fi-content">
+    <div id="content-fi">
       <p>Verkkosivumme on parhaillaan työn alla.</p>
       <p>Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
       <p>Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
     </div>
 
-    <div id="en-content" style="display: none;">
+    <div id="content-en" style="display: none;">
       <p>Our website is currently under construction.</p>
-      <p>Soon we will serve B2B clients worldwide. You're welcome to follow our journey!</p>
+      <p>We’ll soon be serving B2B customers around the world. Stay tuned and follow our journey!</p>
       <p>Contact us: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
     </div>
   </div>
+
+  <script>
+    function switchLanguage(lang) {
+      document.getElementById('content-fi').style.display = lang === 'fi' ? 'block' : 'none';
+      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+    }
+  </script>
 </body>
 </html>
