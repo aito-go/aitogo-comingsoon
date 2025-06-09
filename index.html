@@ -1,103 +1,129 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AitoGo – Tulossa pian</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AitoGo</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      background: #f7f7f7;
+      background: #ffffff;
       color: #333;
     }
     header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
       background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    header img {
-      height: 50px;
-      margin-right: 1rem;
-      filter: hue-rotate(30deg) saturate(1.5); /* Muuttaa logon oranssiksi */
-    }
-    header .title {
+    .logo {
       display: flex;
-      flex-direction: column;
+      align-items: center;
     }
-    header .title h1 {
-      margin: 0;
-      color: #004080; /* Tummansininen teksti */
-      font-size: 1.8rem;
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
     }
-    header .title small {
-      color: #666;
-      font-size: 0.9rem;
+    .lang-selector {
+      display: flex;
+      gap: 10px;
     }
-    .lang-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 2rem;
+    .lang-selector button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
     }
-    .container {
-      max-width: 600px;
-      margin: 3rem auto;
-      padding: 2rem;
+    .hero {
+      padding: 3rem 2rem;
       text-align: center;
     }
-    .container p {
-      font-size: 1.2rem;
-      margin: 1rem 0;
+    .tagline {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #0066cc;
     }
-    select {
-      padding: 0.5rem;
+    .cta-button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
       font-size: 1rem;
+      cursor: pointer;
+    }
+    .under-construction {
+      background: #f0f0f0;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f8f8f8;
+      font-size: 0.9rem;
     }
   </style>
-</head>
-<body>
-  <div class="lang-toggle">
-    <select onchange="changeLang(this.value)">
-      <option value="fi">Suomi</option>
-      <option value="en">English</option>
-    </select>
-  </div>
+  <script>
+    const texts = {
+      fi: {
+        hero: "AitoGo yhdistää on-demand-liikelahjat ja elintarvikealan lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata.\nÄlykäs taustajärjestelmä huolehtii toimituksista – vastuullisesti ja kasvun mukana skaalautuen.\n📦 Pilotit alkavat syksyllä 2025",
+        tagline: "AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.",
+        cta: "Ota yhteyttä",
+        underConstruction: "Verkkosivumme on parhaillaan työn alla.\nPalvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa mukaamme!\n\nOta yhteyttä: aitogo.info@gmail.com"
+      },
+      en: {
+        hero: "AitoGo combines on-demand corporate gifting with lean food-industry process expertise—stock-free, time-saving and waste-free.\nOur intelligent backend handles deliveries—sustainably and scalable with your growth.\n📦 Pilots start in autumn 2025",
+        tagline: "AitoGo – Gifts. Processes. Automation. Sustainability.",
+        cta: "Contact us",
+        underConstruction: "Our website is currently under construction.\nWe’ll soon serve B2B customers worldwide. Welcome aboard!\n\nContact: aitogo.info@gmail.com"
+      },
+      sv: {
+        hero: "AitoGo förenar on-demand-företagsgåvor med lean-expertis för livsmedelsindustrins processer—lagerfritt, tidsbesparande och svinnfritt.\nVår smarta backend sköter leveranserna—hållbart och skalbart i takt med er tillväxt.\n📦 Piloterna startar hösten 2025",
+        tagline: "AitoGo – Gåvor. Processer. Automation. Hållbarhet.",
+        cta: "Kontakta oss",
+        underConstruction: "Vår webbplats är under uppbyggnad.\nVi kommer snart att betjäna B2B-kunder över hela världen. Välkommen med!\n\nKontakta: aitogo.info@gmail.com"
+      }
+    };
 
+    function setLanguage(lang) {
+      document.getElementById("hero").innerText = texts[lang].hero;
+      document.getElementById("tagline").innerText = texts[lang].tagline;
+      document.getElementById("cta").innerText = texts[lang].cta;
+      document.getElementById("under-construction").innerText = texts[lang].underConstruction;
+    }
+  </script>
+</head>
+<body onload="setLanguage('fi')">
   <header>
-    <img src="Logo.jpg.jpg" alt="Logo" />
-    <div class="title">
-      <h1>AitoGo</h1>
-      <small>Aito-Go.com</small>
+    <div class="logo">
+      <img src="logo.png" alt="AitoGo logo">
+      <span style="font-size: 1.5rem; color: #0066cc; font-weight: bold;">AitoGo</span>
+    </div>
+    <div class="lang-selector">
+      <button onclick="setLanguage('fi')">🇫🇮</button>
+      <button onclick="setLanguage('en')">🇬🇧</button>
+      <button onclick="setLanguage('sv')">🇸🇪</button>
     </div>
   </header>
 
-  <div class="container">
-    <p id="line1">Verkkosivumme on parhaillaan työn alla.</p>
-    <p id="line2">Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!</p>
-    <p id="line3">Ota yhteyttä: <a href="mailto:aitogo.info@gmail.com">aitogo.info@gmail.com</a></p>
-  </div>
+  <section class="hero">
+    <p id="hero"></p>
+    <p id="tagline" class="tagline"></p>
+    <button id="cta" class="cta-button" onclick="window.location.href='mailto:aitogo.info@gmail.com'">Ota yhteyttä</button>
+  </section>
 
-  <script>
-    const content = {
-      fi: {
-        line1: "Verkkosivumme on parhaillaan työn alla.",
-        line2: "Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa seuraamaan matkaamme!",
-        line3: "Ota yhteyttä: <a href='mailto:aitogo.info@gmail.com'>aitogo.info@gmail.com</a>"
-      },
-      en: {
-        line1: "Our website is currently under construction.",
-        line2: "We’ll soon serve B2B clients around the world. Stay tuned!",
-        line3: "Contact us: <a href='mailto:aitogo.info@gmail.com'>aitogo.info@gmail.com</a>"
-      }
-    };
-    function changeLang(lang) {
-      document.getElementById("line1").innerText = content[lang].line1;
-      document.getElementById("line2").innerText = content[lang].line2;
-      document.getElementById("line3").innerHTML = content[lang].line3;
-    }
-  </script>
+  <div id="under-construction" class="under-construction"></div>
+
+  <footer>
+    © 2025 AitoGo – All rights reserved.
+  </footer>
 </body>
 </html>
