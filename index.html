@@ -7,7 +7,8 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
     header { position: relative; padding: 1rem; background: #f8f9fa; display: flex; align-items: center; }
-    .logo img { height: 40px; vertical-align: middle; margin-right: 0.5rem; }
+    .logo img { height: 40px; vertical-align: middle; }
+    .logo .logotext { height: 40px; margin-left: 0.5rem; vertical-align: middle; }
     .language-switcher {
       position: absolute;
       top: 1rem;
@@ -35,7 +36,7 @@
   <header>
     <div class="logo">
       <img src="logo.png" alt="AitoGo logo">
-      <span>AitoGo</span>
+      <img src="logotext.png" alt="Aitogo.com" class="logotext">
     </div>
     <div class="language-switcher">
       <button id="btn-fi" onclick="setLanguage('fi')"><img src="fi.png" alt="FI"></button>
@@ -60,25 +61,25 @@
       fi: {
         heroTitle: "AitoGo yhdistää on-demand-liikelahjat ja elintarvikealan lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata.",
         heroSubtitle: "Älykäs taustajärjestelmä huolehtii toimituksista – vastuullisesti ja kasvun mukana skaalautuen.",
-        detail1: "On-demand-liikelahjat ilman varastoa", 
-        detail2: "Lean-prosessien asiantuntemus", 
-        detail3: "Pilotit alkavat syksyllä 2025", 
+        detail1: "On-demand-liikelahjat ilman varastoa",
+        detail2: "Lean-prosessien asiantuntemus",
+        detail3: "Pilotit alkavat syksyllä 2025",
         cta: "Ota yhteyttä: aitogo.info@gmail.com"
       },
       en: {
         heroTitle: "AitoGo combines on-demand corporate gifting with lean food-industry process expertise—stock-free, time-saving and waste-free.",
         heroSubtitle: "Our intelligent backend handles deliveries—sustainably and scalable with your growth.",
-        detail1: "On-demand gifts with no stock", 
-        detail2: "Lean process expertise", 
-        detail3: "Pilots start in autumn 2025", 
+        detail1: "On-demand gifts with no stock",
+        detail2: "Lean process expertise",
+        detail3: "Pilots start in autumn 2025",
         cta: "Contact us: aitogo.info@gmail.com"
       },
       se: {
         heroTitle: "AitoGo förenar on-demand-företagsgåvor med lean-expertis för livsmedelsindustrins processer—lagerfritt, tidsbesparande och svinnfritt.",
         heroSubtitle: "Vår smarta backend sköter leveranserna—hållbart och skalbart i takt med er tillväxt.",
-        detail1: "On-demand-gåvor utan lager", 
-        detail2: "Lean-processexpertis", 
-        detail3: "Piloterna startar hösten 2025", 
+        detail1: "On-demand-gåvor utan lager",
+        detail2: "Lean-processexpertis",
+        detail3: "Piloterna startar hösten 2025",
         cta: "Kontakta oss: aitogo.info@gmail.com"
       }
     };
