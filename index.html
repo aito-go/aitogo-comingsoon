@@ -1,128 +1,93 @@
 <!DOCTYPE html>
 <html lang="fi">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AitoGo</title>
-  <link rel="icon" href="logo.png" type="image/png" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #222;
-      text-align: center;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #ccc;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-    nav button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    section.hero {
-      padding: 2rem;
-    }
-    .cta {
-      background-color: #0056b3;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-    footer {
-      background-color: #f1f1f1;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9fa; }
+    .logo img { height: 40px; vertical-align: middle; margin-right: 0.5rem; }
+    .language-switcher button { background: none; border: none; margin: 0 0.25rem; cursor: pointer; padding: 0.25rem; }
+    .language-switcher button.active { border-bottom: 2px solid #007bff; }
+    .hero { text-align: center; padding: 4rem 1rem; }
+    .hero h1 { font-size: 2rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 1rem; }
+    .hero .details { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+    .hero .details div { display: flex; align-items: center; gap: 0.5rem; }
+    .hero .cta { font-weight: bold; }
   </style>
 </head>
-
 <body>
   <header>
     <div class="logo">
       <img src="logo.png" alt="AitoGo logo">
-      <span style="font-size: 1.4rem; font-weight: bold; color: #004080;">AitoGo</span>
+      <span>AitoGo</span>
     </div>
-    <nav>
-      <button onclick="setLang('fi')">🇫🇮</button>
-      <button onclick="setLang('en')">🇬🇧</button>
-      <button onclick="setLang('sv')">🇸🇪</button>
-    </nav>
+    <div class="language-switcher">
+      <button id="btn-fi" onclick="setLanguage('fi')"><img src="fi.png" alt="FI"> FI</button>
+      <button id="btn-en" onclick="setLanguage('en')"><img src="en.png" alt="EN"> EN</button>
+      <button id="btn-se" onclick="setLanguage('se')"><img src="se.png" alt="SE"> SE</button>
+    </div>
   </header>
 
   <section class="hero">
-    <p id="intro"></p>
-    <p id="pilot"></p>
-    <h2 id="tagline"></h2>
-    <button class="cta" id="cta"></button>
+    <h1 id="hero-title"></h1>
+    <p id="hero-subtitle"></p>
+    <div class="details">
+      <div><span>🎁</span><span id="detail-1"></span></div>
+      <div><span>🔍</span><span id="detail-2"></span></div>
+      <div><span>📦</span><span id="detail-3"></span></div>
+    </div>
+    <p class="cta" id="cta-text"></p>
   </section>
 
-  <footer>
-    <p id="note"></p>
-    <p>Ota yhteyttä: aitogo.info@gmail.com</p>
-    <p>© 2025 AitoGo – All rights reserved.</p>
-  </footer>
-
   <script>
-    const content = {
+    const translations = {
       fi: {
-        intro: "AitoGo yhdistää on-demand-liikelahjat ja elintarvikealan lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata. Älykäs taustajärjestelmä huolehtii toimituksista – vastuullisesti ja kasvun mukana skaalautuen.",
-        pilot: "📦 Pilotit alkavat syksyllä 2025",
-        tagline: "AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.",
-        cta: "Ota yhteyttä",
-        note: "Verkkosivumme on parhaillaan työn alla. Palvelemme pian B2B-asiakkaita ympäri maailman. Tervetuloa mukaamme!"
+        heroTitle: "AitoGo yhdistää on-demand-liikelahjat ja elintarvikealan lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata.",
+        heroSubtitle: "Älykäs taustajärjestelmä huolehtii toimituksista – vastuullisesti ja kasvun mukana skaalautuen.",
+        detail1: "On-demand-liikelahjat ilman varastoa", 
+        detail2: "Lean‑prosessien asiantuntemus", 
+        detail3: "Pilotit alkavat syksyllä 2025", 
+        cta: "Ota yhteyttä: aitogo.info@gmail.com"
       },
       en: {
-        intro: "AitoGo combines on-demand corporate gifting with lean food-industry process expertise—stock-free, time-saving and waste-free. Our intelligent backend handles deliveries—sustainably and scalable with your growth.",
-        pilot: "📦 Pilots start in autumn 2025",
-        tagline: "AitoGo – Gifts. Processes. Automation. Sustainability.",
-        cta: "Contact us",
-        note: "Our website is currently under construction. We will soon serve B2B customers around the world. Welcome aboard!"
+        heroTitle: "AitoGo combines on-demand corporate gifting with lean food-industry process expertise—stock-free, time-saving and waste-free.",
+        heroSubtitle: "Our intelligent backend handles deliveries—sustainably and scalable with your growth.",
+        detail1: "On-demand gifts with no stock", 
+        detail2: "Lean process expertise", 
+        detail3: "Pilots start in autumn 2025", 
+        cta: "Contact us: aitogo.info@gmail.com"
       },
-      sv: {
-        intro: "AitoGo förenar on-demand-företagsgåvor med lean-expertis för livsmedelsindustrins processer—lagerfritt, tidsbesparande och svinnfritt. Vår smarta backend sköter leveranserna—hållbart och skalbart i takt med er tillväxt.",
-        pilot: "📦 Piloterna startar hösten 2025",
-        tagline: "AitoGo – Gåvor. Processer. Automation. Hållbarhet.",
-        cta: "Kontakta oss",
-        note: "Vår webbplats är för närvarande under arbete. Snart betjänar vi B2B-kunder över hela världen. Välkommen med!"
+      se: {
+        heroTitle: "AitoGo förenar on-demand-företagsgåvor med lean-expertis för livsmedelsindustrins processer—lagerfritt, tidsbesparande och svinnfritt.",
+        heroSubtitle: "Vår smarta backend sköter leveranserna—hållbart och skalbart i takt med er tillväxt.",
+        detail1: "On-demand-gåvor utan lager", 
+        detail2: "Lean-processexpertis", 
+        detail3: "Piloterna startar hösten 2025", 
+        cta: "Kontakta oss: aitogo.info@gmail.com"
       }
     };
 
-    function setLang(lang) {
-      document.getElementById('intro').textContent = content[lang].intro;
-      document.getElementById('pilot').textContent = content[lang].pilot;
-      document.getElementById('tagline').textContent = content[lang].tagline;
-      document.getElementById('cta').textContent = content[lang].cta;
-      document.getElementById('note').textContent = content[lang].note;
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = lang;
+      document.getElementById('hero-title').innerText = t.heroTitle;
+      document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+      document.getElementById('detail-1').innerText = t.detail1;
+      document.getElementById('detail-2').innerText = t.detail2;
+      document.getElementById('detail-3').innerText = t.detail3;
+      document.getElementById('cta-text').innerText = t.cta;
+
+      // Highlight active button
+      ['fi','en','se'].forEach(l => {
+        document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+      });
     }
 
-    // Oletuskieli
-    setLang('fi');
+    // Initialize default language
+    setLanguage('fi');
   </script>
 </body>
-
 </html>
