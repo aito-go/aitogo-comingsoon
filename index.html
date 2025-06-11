@@ -6,57 +6,121 @@
   <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
   <link rel="icon" href="favicon.ico">
   <style>
-    /* Perusasetukset */
+    /* --- Perusasetukset --- */
     body { margin:0; font-family:Arial,sans-serif; background:#fff; color:#333; }
     a { color:#0057b7; text-decoration:none; }
     a:hover { text-decoration:underline; }
 
-    /* Header */
-    header { display:flex; align-items:center; justify-content:space-between; padding:0.5rem 1rem; border-bottom:1px solid #eee; position:relative; }
-    .logo { display:flex; align-items:center; }
-    .logo img { height:50px; margin-right:0.5rem; }
-    .logo-text { font-size:1.5rem; font-weight:bold; color:#0057b7; }
-    .domain-text { font-size:0.9rem; color:#666; }
-    .lang { display:flex; gap:0.5rem; }
-    .lang button { background:none; border:none; cursor:pointer; font-size:0.9rem; display:flex; align-items:center; }
-    .lang img { width:24px; height:16px; margin-right:0.25rem; }
+    /* --- Header --- */
+    header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0.5rem 1rem; border-bottom:1px solid #eee;
+    }
+    .logo {
+      display:flex; align-items:center;
+    }
+    .logo img {
+      height:50px; margin-right:0.5rem;
+    }
+    .logo-text {
+      line-height:1;
+      font-size:1.5rem; font-weight:bold; color:#0057b7;
+    }
+    .domain-text {
+      font-size:0.9rem; color:#666;
+    }
+    .social {
+      display:flex; gap:0.5rem; margin-left:1rem;
+    }
+    .social img {
+      width:24px; height:24px; cursor:pointer;
+    }
+    .lang {
+      display:flex; gap:0.5rem; align-items:center;
+    }
+    .lang button {
+      background:none; border:none; cursor:pointer;
+      font-size:0.9rem; display:flex; align-items:center;
+    }
+    .lang img {
+      width:24px; height:16px; margin-right:0.25rem;
+    }
 
-    /* Announcement */
-    #announcement { background:#fffae6; padding:1rem; animation:zoom 2s ease-in-out infinite alternate; }
-    @keyframes zoom { from { transform:scale(1); } to { transform:scale(1.05); } }
+    /* --- Announcement --- */
+    #announcement {
+      background:#fffae6; padding:1rem; text-align:center;
+      animation:zoom 2s ease-in-out infinite alternate;
+    }
+    @keyframes zoom { from{transform:scale(1);} to{transform:scale(1.05);} }
 
-    /* Nav */
+    /* --- Navigation --- */
     nav { background:#0057b7; }
     nav ul { list-style:none; margin:0; padding:0; display:flex; }
-    nav li { position:relative; }
-    nav > ul > li > a { display:block; padding:0.75rem 1rem; color:#fff; }
-    nav li ul { position:absolute; top:100%; left:0; background:#fff; border:1px solid #ddd; display:none; min-width:200px; }
-    nav li:hover ul { display:block; }
-    nav li ul li a { color:#0057b7; padding:0.5rem 1rem; display:block; }
+    nav > ul > li { position:relative; }
+    nav > ul > li > a {
+      display:block; padding:0.75rem 1rem; color:#fff;
+    }
+    nav li ul {
+      position:absolute; top:100%; left:0; background:#fff;
+      border:1px solid #ddd; display:none; min-width:200px; z-index:10;
+    }
+    nav li:hover > ul { display:block; }
+    nav li ul li a {
+      color:#0057b7; padding:0.5rem 1rem; display:block;
+    }
 
-    /* Main hero */
+    /* --- Search bar --- */
+    #search-bar {
+      display:flex; justify-content:center; padding:1rem;
+      background:#f0f0f0;
+    }
+    #search-bar input {
+      width:80%; max-width:500px; padding:0.5rem 1rem;
+      border:1px solid #ccc; border-radius:4px;
+      font-size:1rem;
+      background:url('search-icon.png') no-repeat 10px center;
+      padding-left:2.5rem;
+    }
+
+    /* --- Main hero --- */
     main { padding:2rem 1rem; text-align:center; }
     #hero { font-size:1rem; line-height:1.5; }
     .tagline { margin:1.5rem 0; font-size:1.25rem; color:#0057b7; font-weight:bold; }
-    .cta { padding:0.75rem 1.5rem; background:#0057b7; color:#fff; border:none; border-radius:4px; cursor:pointer; }
+    .cta {
+      padding:0.75rem 1.5rem; background:#0057b7; color:#fff;
+      border:none; border-radius:4px; cursor:pointer;
+    }
 
-    /* Contact section */
-    #contact-section { padding:2rem 1rem; background:#f5f5f5; text-align:center; }
-    #contact-section div { margin:0.5rem 0; }
+    /* --- Contact section --- */
+    #contact-section {
+      padding:2rem 1rem; background:#f5f5f5; text-align:center;
+    }
+    #contact-section div { margin:0.5rem 0; font-size:1rem; }
     .icon { vertical-align:middle; margin-right:0.5rem; }
 
-    /* Footer */
-    footer { padding:1rem; text-align:center; font-size:0.9rem; background:#f0f0f0; }
+    /* --- Footer --- */
+    footer {
+      padding:0.5rem; text-align:center; font-size:0.9rem;
+      background:#f0f0f0; margin-top:2rem;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="AitoGo logo">
-      <div>
-        <div class="logo-text">AitoGo</div>
-        <div class="domain-text">Aito-Go.com</div>
+    <div style="display:flex; align-items:center;">
+      <div class="logo">
+        <img src="logo.png" alt="AitoGo logo">
+        <div>
+          <div class="logo-text">AitoGo</div>
+          <div class="domain-text">Aito-Go.com</div>
+        </div>
+      </div>
+      <div class="social">
+        <img src="linkedin.png" alt="LinkedIn">
+        <img src="instagram.png" alt="Instagram">
+        <img src="tiktok.png" alt="TikTok">
+        <img src="youtube.png" alt="YouTube">
       </div>
     </div>
     <div class="lang">
@@ -66,9 +130,7 @@
     </div>
   </header>
 
-  <div id="announcement">
-    <span id="announce-text"></span>
-  </div>
+  <div id="announcement"><span id="announce-text"></span></div>
 
   <nav>
     <ul>
@@ -83,16 +145,37 @@
           <li><a href="#">Ekotuotteet</a></li>
         </ul>
       </li>
-      <!-- Lisää tarvittaessa muille valikoille placeholdereja -->
-      <li><a href="#">Teemat ▾</a></li>
-      <li><a href="#">Palvelut ▾</a></li>
+      <li><a href="#">Teemat ▾</a>
+        <ul>
+          <li><a href="#">Vastuullisuus</a></li>
+          <li><a href="#">Premium Choice</a></li>
+          <li><a href="#">Hyvinvointi</a></li>
+          <li><a href="#">Trendit</a></li>
+          <li><a href="#">Uutuudet</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Palvelut ▾</a>
+        <ul>
+          <li><a href="#">Lean-prosessit</a></li>
+          <li><a href="#">Konsultointi</a></li>
+          <li><a href="#">Designtuotteet</a></li>
+          <li><a href="#">Työkalut</a></li>
+          <li><a href="#">Elintarviketuotannon tarvikkeet</a></li>
+          <li><a href="#">Hygienialaitteet</a></li>
+          <li><a href="#">Pienkoneet</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
+
+  <div id="search-bar">
+    <input type="text" placeholder="Mitä etsit?">
+  </div>
 
   <main>
     <div id="hero"></div>
     <div class="tagline" id="tagline"></div>
-    <button class="cta" id="cta-button"></button>
+    <a href="mailto:aitogo.info@gmail.com"><button class="cta" id="cta-button"></button></a>
   </main>
 
   <section id="contact-section">
@@ -147,7 +230,7 @@
       document.getElementById("footer-text").innerText = t.footer;
     }
 
-    // Aseta oletuskieli
+    // Start in Finnish
     setLanguage("fi");
   </script>
 
