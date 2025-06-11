@@ -1,135 +1,101 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aito-Go.com</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+    /* Perusasetukset */
+    body { margin:0; font-family:Arial,sans-serif; color:#333; }
+    a { color:#0057b7; text-decoration:none; }
+    a:hover { text-decoration:underline; }
 
-    header {
-      padding: 10px 20px;
-      background-color: white;
-    }
-
+    /* HEADER */
     .social-row {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-bottom: 5px;
+      display:flex; justify-content:flex-end; gap:10px;
+      padding:8px 16px; background:#fafafa;
     }
-
-    .social-row img {
-      height: 24px;
-      width: 24px;
-    }
+    .social-row img { width:24px; height:24px; }
 
     .brand-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:8px 16px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
+    .brand-row .brand {
+      display:flex; align-items:center; gap:8px;
     }
-
-    .brand img {
-      display: inline-block;
+    /* Tämä varmistaa molemmille kuville 50px korkeus */
+    .brand-row .brand img {
+      height:50px !important;
+      width:auto;
     }
 
     .lang-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display:flex; align-items:center; gap:8px;
     }
+    .lang-row img { width:24px; height:16px; cursor:pointer; }
+    .lang-row span { font-size:0.85rem; }
 
-    .lang-row img {
-      height: 18px;
-      cursor: pointer;
-    }
-
+    /* NAV */
     nav {
-      background-color: #003B73;
-      color: white;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 12px;
+      background:#0057b7; display:flex; gap:16px; padding:8px 16px;
+    }
+    .dropdown { position:relative; }
+    .dropbtn {
+      background:none; border:none; color:#fff; font-size:1rem;
+      cursor:pointer; padding:8px;
+    }
+    .dropdown-content {
+      display:none; position:absolute; top:100%; left:0;
+      background:#fff; border:1px solid #ccc; min-width:160px; z-index:10;
+    }
+    .dropdown-content a {
+      display:block; padding:8px 12px; color:#0057b7;
+    }
+    .dropdown:hover .dropdown-content {
+      display:block;
     }
 
-    nav .menu-item {
-      position: relative;
+    /* SEARCH */
+    .search-bar { background:#f3f3f3; padding:16px; text-align:center; }
+    .search-bar input {
+      width:80%; max-width:400px; padding:8px 12px;
+      border:1px solid #ccc; border-radius:8px; font-size:1rem;
     }
 
-    nav .menu-item:hover .dropdown {
-      display: block;
+    /* MAIN */
+    main { padding:32px 16px; text-align:center; }
+    main p { font-size:1rem; line-height:1.5; }
+    main h2 { color:#0057b7; font-size:1.4rem; margin:16px 0; }
+    button.cta {
+      padding:10px 20px; background:#0057b7; color:#fff; border:none;
+      border-radius:4px; cursor:pointer; font-size:1rem;
     }
 
-    .dropdown {
-      display: none;
-      position: absolute;
-      background-color: #0052A5;
-      top: 100%;
-      left: 0;
-      min-width: 160px;
-      z-index: 999;
-    }
+    /* CONTACT */
+    #contact { background:#f5f5f5; padding:24px 16px; text-align:center; }
+    #contact div { margin:8px 0; font-size:1rem; }
+    .icon { margin-right:8px; vertical-align:middle; }
 
-    .dropdown div {
-      padding: 10px;
-      cursor: pointer;
+    /* ANNOUNCEMENT */
+    #announcement {
+      background:#fffae6; padding:16px; text-align:center; margin-top:32px;
+      animation:fadeInOut 6s ease-in-out infinite;
     }
-
-    .dropdown div:hover {
-      background-color: #0077cc;
-    }
-
-    .search-section {
-      text-align: center;
-      padding: 40px 10px;
-    }
-
-    .search-box {
-      padding: 10px 15px;
-      font-size: 18px;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-    }
-
-    .highlight-banner {
-      text-align: center;
-      font-weight: bold;
-      padding: 20px;
-      animation: fadeInOut 8s infinite;
-    }
-
     @keyframes fadeInOut {
-      0% {opacity: 0;}
-      10% {opacity: 1;}
-      90% {opacity: 1;}
-      100% {opacity: 0;}
+      0%,100% { opacity:0.5; transform:scale(0.98); }
+      50%    { opacity:1;   transform:scale(1.02); }
     }
 
+    /* FOOTER */
     footer {
-      background-color: #003B73;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
+      background:#e8e8e8; text-align:center; padding:16px;
+      font-size:0.85rem; color:#555;
     }
-
   </style>
 </head>
 <body>
+
   <header>
     <div class="social-row">
       <img src="linkedin.png" alt="LinkedIn">
@@ -140,8 +106,8 @@
     </div>
     <div class="brand-row">
       <div class="brand">
-        <img src="logo.png" alt="AitoGo logo" style="height:70px; margin-right:8px;">
-        <img src="Logotext.png" alt="AitoGo teksti" style="height:70px;">
+        <img src="logo.png" alt="AitoGo symbol logo">
+        <img src="Logotext.png" alt="AitoGo logo ja teksti">
       </div>
       <div class="lang-row">
         <img src="fi.png" alt="FI" onclick="setLanguage('fi')"><span>FI</span>
@@ -152,96 +118,103 @@
   </header>
 
   <nav>
-    <div class="menu-item" id="menu-products">Tuotteet
-      <div class="dropdown" id="submenu-products">
-        <div>Lahjakortit</div>
-        <div>Vaatteet</div>
-        <div>Kynät</div>
-        <div>Kupit</div>
-        <div>Muki & pad</div>
-        <div>Pakkaukset</div>
-        <div>Ekotuotteet</div>
-      </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="menu-products"></button>
+      <div class="dropdown-content" id="dropdown-products"></div>
     </div>
-    <div class="menu-item" id="menu-themes">Teemat
-      <div class="dropdown" id="submenu-themes">
-        <div>Vastuullisuus</div>
-        <div>Premium Choice</div>
-        <div>Blogi</div>
-      </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="menu-themes"></button>
+      <div class="dropdown-content" id="dropdown-themes"></div>
     </div>
-    <div class="menu-item" id="menu-services">Palvelut
-      <div class="dropdown" id="submenu-services">
-        <div>Prosessikonsultointi</div>
-        <div>Tuotannon tarvikkeet</div>
-        <div>Pienkoneet ja laitteet</div>
-      </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="menu-services"></button>
+      <div class="dropdown-content" id="dropdown-services"></div>
     </div>
   </nav>
 
-  <div class="search-section">
-    <input type="text" class="search-box" id="search-box" placeholder="Mitä etsit? 🔍">
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="">
   </div>
 
-  <div class="highlight-banner" id="banner-text">
-    Kiitos kun vierailit sivuillamme! Sivumme ovat vielä työn alla, mutta palaamme pian ajankohtaisella tiedolla. Pysykää kuulolla!
-  </div>
+  <main>
+    <p id="hero-text"></p>
+    <h2 id="tagline"></h2>
+    <button class="cta" id="cta-button" onclick="window.location.href='mailto:aitogo.info@gmail.com'"></button>
+    <div id="contact">
+      <div><span class="icon">📞</span><span id="phone"></span></div>
+      <div><span class="icon">💬</span><span id="chat"></span></div>
+    </div>
+  </main>
 
-  <footer>
-    <p>© 2025 AitoGo Oy | Kaikki oikeudet pidätetään.</p>
-  </footer>
+  <div id="announcement"></div>
+
+  <footer id="footer-text"></footer>
 
   <script>
     const translations = {
       fi: {
-        products: "Tuotteet",
-        themes: "Teemat",
-        services: "Palvelut",
-        search: "Mitä etsit? 🔍",
-        submenuProducts: ["Lahjakortit", "Vaatteet", "Kynät", "Kupit", "Muki & pad", "Pakkaukset", "Ekotuotteet"],
-        submenuThemes: ["Vastuullisuus", "Premium Choice", "Blogi"],
-        submenuServices: ["Prosessikonsultointi", "Tuotannon tarvikkeet", "Pienkoneet ja laitteet"]
+        products: ["Lahjakortit","Vaatteet","Kynät","Kupit","Muki & pad","Pakkaukset","Ekotuotteet"],
+        themes: ["Vastuullisuus","Premium Choice","Blogi"],
+        services: ["Prosessikonsultointi","Tuotannon tarvikkeet","Pienkoneet ja laitteet"],
+        hero: "AitoGo yhdistää on-demand-liikelahjat ja lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata.",
+        tagline: "AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.",
+        cta: "Ota yhteyttä",
+        phone: "+358 00 000 0000",
+        chat: "Aloita chat niin autamme sinua.",
+        announce: "Kiitos kun vierailit sivuillamme! Sivumme ovat vielä työn alla, mutta palaamme pian ajankohtaisella tiedolla. Pysykää kuulolla!",
+        searchPlaceholder: "Mitä etsit?",
+        footer: "© 2025 AitoGo Oy | Kaikki oikeudet pidätetään."
       },
       se: {
-        products: "Produkter",
-        themes: "Teman",
-        services: "Tjänster",
-        search: "Vad letar du efter? 🔍",
-        submenuProducts: ["Presentkort", "Kläder", "Pennor", "Koppar", "Mugg & underlägg", "Förpackningar", "Ekologiska produkter"],
-        submenuThemes: ["Ansvar", "Premiumval", "Blogg"],
-        submenuServices: ["Processkonsultation", "Produktionstillbehör", "Små maskiner och utrustning"]
+        products: ["Presentkort","Kläder","Pennor","Kupit","Mugg & pad","Förpackningar","Ekoprodukter"],
+        themes: ["Hållbarhet","Premiumval","Blogg"],
+        services: ["Processkonsultation","Produktionstillbehör","Lätta maskiner och utrustning"],
+        hero: "AitoGo förenar on-demand-företagsgåvor med lean-expertis—lagerfritt, tidsbesparande och svinnfritt.",
+        tagline: "AitoGo – Gåvor. Processer. Automation. Hållbarhet.",
+        cta: "Kontakta oss",
+        phone: "+358 00 000 0000",
+        chat: "Starta en chatt så hjälper vi dig.",
+        announce: "Tack för ditt besök! Vår webbplats är under uppbyggnad, men vi är snart tillbaka med uppdateringar. Håll utkik!",
+        searchPlaceholder: "Vad letar du efter?",
+        footer: "© 2025 AitoGo Oy | Alla rättigheter förbehållna."
       },
       en: {
-        products: "Products",
-        themes: "Themes",
-        services: "Services",
-        search: "What are you looking for? 🔍",
-        submenuProducts: ["Gift cards", "Clothing", "Pens", "Cups", "Mug & pad", "Packaging", "Eco products"],
-        submenuThemes: ["Sustainability", "Premium Choice", "Blog"],
-        submenuServices: ["Process consulting", "Production supplies", "Small machines and equipment"]
+        products: ["Gift Cards","Apparel","Pens","Cups","Mugs & pads","Packaging","Eco Products"],
+        themes: ["Sustainability","Premium Choice","Blog"],
+        services: ["Process Consulting","Production Supplies","Small Machines & Equipment"],
+        hero: "AitoGo combines on-demand corporate gifting with lean-process expertise—stock-free, time-saving and waste-free.",
+        tagline: "AitoGo – Gifts. Processes. Automation. Sustainability.",
+        cta: "Contact us",
+        phone: "+358 00 000 0000",
+        chat: "Start a chat and we’ll help you.",
+        announce: "Thank you for visiting! Our site is still under construction, but we’ll be back soon with updates. Stay tuned!",
+        searchPlaceholder: "What are you looking for?",
+        footer: "© 2025 AitoGo Oy | All rights reserved."
       }
     };
 
     function setLanguage(lang) {
-      document.getElementById('menu-products').childNodes[0].nodeValue = translations[lang].products;
-      document.getElementById('menu-themes').childNodes[0].nodeValue = translations[lang].themes;
-      document.getElementById('menu-services').childNodes[0].nodeValue = translations[lang].services;
-      document.getElementById('search-box').placeholder = translations[lang].search;
+      document.documentElement.lang = lang;
+      const t = translations[lang];
+      document.getElementById("dropdown-products").innerHTML = t.products.map(i=>`<a href="#">${i}</a>`).join("");
+      document.getElementById("dropdown-themes").innerHTML   = t.themes.map(i=>`<a href="#">${i}</a>`).join("");
+      document.getElementById("dropdown-services").innerHTML = t.services.map(i=>`<a href="#">${i}</a>`).join("");
 
-      const updateSubmenu = (id, items) => {
-        const menu = document.getElementById(id);
-        menu.innerHTML = "";
-        items.forEach(item => {
-          const div = document.createElement("div");
-          div.textContent = item;
-          menu.appendChild(div);
-        });
-      };
+      document.getElementById("menu-products").innerText = {fi:"Tuotteet",se:"Produkter",en:"Products"}[lang];
+      document.getElementById("menu-themes").innerText   = {fi:"Teemat",se:"Teman",en:"Themes"}[lang];
+      document.getElementById("menu-services").innerText = {fi:"Palvelut",se:"Tjänster",en:"Services"}[lang];
 
-      updateSubmenu("submenu-products", translations[lang].submenuProducts);
-      updateSubmenu("submenu-themes", translations[lang].submenuThemes);
-      updateSubmenu("submenu-services", translations[lang].submenuServices);
+      document.getElementById("hero-text").innerText      = t.hero;
+      document.getElementById("tagline").innerText        = t.tagline;
+      document.getElementById("cta-button").innerText     = t.cta;
+      document.getElementById("phone").innerText          = t.phone;
+      document.getElementById("chat").innerText           = t.chat;
+      document.getElementById("announcement").innerText   = t.announce;
+      document.getElementById("footer-text").innerText    = t.footer;
+      document.getElementById("search-input").placeholder = t.searchPlaceholder;
     }
+
+    setLanguage("fi");
   </script>
 </body>
 </html>
