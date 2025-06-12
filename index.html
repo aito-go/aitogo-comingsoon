@@ -5,46 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
   <style>
-    /* ... olemassa oleva CSS pysyy muuttumattomana ... */
+    body { margin:0; font-family:Arial,sans-serif; color:#333; }
+    a { color:#0057b7; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    .social-row { display:flex; justify-content:flex-end; gap:10px; padding:8px 16px; background:#fafafa; }
+    .social-row img { width:24px; height:24px; cursor:pointer; }
+
+    .brand-row { display:flex; align-items:center; justify-content:space-between; padding:8px 16px; }
+    .brand-row .brand { display:flex; align-items:center; gap:8px; }
+    .brand-row .brand img { height:50px; width:auto; }
+
+    .lang-row { display:flex; align-items:center; gap:8px; }
+    .lang-row img { width:24px; height:16px; cursor:pointer; }
+    .lang-row span { font-size:0.85rem; }
+
+    nav { background:#0057b7; display:flex; gap:16px; padding:8px 16px; }
+    .dropdown { position:relative; }
+    .dropbtn { background:none; border:none; color:#fff; font-size:1rem; cursor:pointer; padding:8px; }
+    .dropdown-content { display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid #ccc; min-width:160px; z-index:10; }
+    .dropdown-content a { display:block; padding:8px 12px; color:#0057b7; }
+    .dropdown:hover .dropdown-content { display:block; }
+
+    .search-bar { background:#e9f0ff; padding:16px; text-align:center; }
+    .search-bar input { width:80%; max-width:400px; padding:8px 12px; border:1px solid #ccc; border-radius:10px; font-size:1rem; }
+
+    main { padding:32px 16px; text-align:center; }
+    main p { font-size:1rem; line-height:1.5; }
+    main h2 { color:#0057b7; font-size:1.4rem; margin:16px 0; }
+    button.cta { padding:10px 20px; background:#0057b7; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:1rem; }
+
+    #contact { background:#f5f5f5; padding:24px 16px; text-align:center; }
+    #contact div { margin:8px 0; font-size:1rem; }
+    .icon { margin-right:8px; vertical-align:middle; }
+
+    #announcement { background:#fffae6; padding:16px; text-align:center; margin-top:32px; animation:fadeInOut 6s ease-in-out infinite; }
+    @keyframes fadeInOut { 0%,100% { opacity:0.5; transform:scale(0.98); } 50% { opacity:1; transform:scale(1.02); } }
+
+    #miksi-aitogo section { padding:3rem 1rem; background-color:#f7f7f7; margin-top:32px; }
+
+    footer { background:#e8e8e8; text-align:center; padding:16px; font-size:0.85rem; color:#555; }
+
+    @media (max-width: 600px) { .social-row, .brand-row, nav { flex-direction:column; align-items:flex-start; } .brand-row { gap:8px; } .lang-row { justify-content:flex-start; } }
   </style>
 </head>
 <body>
 
-  <!-- Header ja nav, search-bar, main ym. pysyvät alkuperäisinä -->
+  <header>
+    <div class="social-row">
+      <img src="linkedin.png" alt="LinkedIn">
+      <img src="instagram.png" alt="Instagram">
+      <img src="tiktok.png" alt="TikTok">
+      <img src="facebook.png" alt="Facebook">
+      <img src="youtube.png" alt="YouTube">
+    </div>
+    <div class="brand-row">
+      <div class="brand">
+        <img src="logo.png" alt="AitoGo symbol logo">
+        <img src="Logotext.png" alt="AitoGo logo ja teksti">
+      </div>
+      <div class="lang-row">
+        <img src="fi.png" alt="FI" onclick="switchLang('fi')"><span>FI</span> |
+        <img src="se.png" alt="SE" onclick="switchLang('sv')"><span>SE</span> |
+        <img src="en.png" alt="EN" onclick="switchLang('en')"><span>EN</span>
+      </div>
+    </div>
+  </header>
 
-  <footer id="footer-text"></footer>
+  <nav>
+    <div class="dropdown">
+      <button class="dropbtn" id="menu-products"></button>
+      <div class="dropdown-content" id="dropdown-products"></div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="menu-themes"></button>
+      <div class="dropdown-content" id="dropdown-themes"></div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="menu-services"></button>
+      <div class="dropdown-content" id="dropdown-services"></div>
+    </div>
+  </nav>
 
-  <!-- Lisätty Miksi AitoGo -osio juuri footerin yläpuolelle -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="">
+  </div>
+
+  <main>
+    <p id="hero-text"></p>
+    <h2 id="tagline"></h2>
+    <button class="cta" id="cta-button" onclick="window.location.href='mailto:aitogo.info@gmail.com'"></button>
+    <div id="contact">
+      <div><span class="icon">📞</span><span id="phone"></span></div>
+      <div><span class="icon">💬</span><span id="chat"></span></div>
+    </div>
+  </main>
+
+  <div id="announcement"></div>
+
+  <!-- Miksi AitoGo -osio footerin yläpuolella -->
   <div id="miksi-aitogo">
     <div id="section-fi">
-      <section style="padding: 3rem 1rem; background-color: #f7f7f7;">
-        <!-- Suomi-sisältö -->
+      <section>
+        <div style="max-width:1000px;margin:0 auto;text-align:center;">
+          <h2 style="font-size:2rem;margin-bottom:1rem;">Miksi AitoGo?</h2>
+          <p style="font-size:1.1rem;color:#444;margin-bottom:2rem;">Luotettava. Fiksu. Tehokas.</p>
+          <ul style="list-style:none;padding:0;max-width:700px;margin:0 auto;text-align:left;">
+            <li style="margin-bottom:1rem;">✅ Kehitetty aidosti B2B-tarpeisiin, ei kuluttajille</li>
+            <li style="margin-bottom:1rem;">✅ Automatisoitu tuotanto- ja toimitusketju – toimii myös skaalatessa</li>
+            <li style="margin-bottom:1rem;">✅ Jäljitettävä, räätälöity ja älykäs toimitusmalli</li>
+            <li style="margin-bottom:1rem;">✅ Yhteensopiva tulevaisuuden AI-työkalujen kanssa</li>
+            <li style="margin-bottom:1rem;">✅ Säästää aikaa, rahaa ja ympäristöä – ilman kompromisseja</li>
+          </ul>
+        </div>
       </section>
     </div>
     <div id="section-sv" style="display:none;">
-      <section style="padding: 3rem 1rem; background-color: #f7f7f7;">
-        <!-- Ruotsi-sisältö -->
+      <section>
+        <div style="max-width:1000px;margin:0 auto;text-align:center;">
+          <h2 style="font-size:2rem;margin-bottom:1rem;">Varför AitoGo?</h2>
+          <p style="font-size:1.1rem;color:#444;margin-bottom:2rem;">Pålitlig. Smart. Effektiv.</p>
+          <ul style="list-style:none;padding:0;max-width:700px;margin:0 auto;text-align:left;">
+            <li style="margin-bottom:1rem;">✅ Utvecklad för B2B – inte för konsumentmarknaden</li>
+            <li style="margin-bottom:1rem;">✅ Automatiserad produktion och leveranskedja – redo för tillväxt</li>
+            <li style="margin-bottom:1rem;">✅ Spårbar, skräddarsydd och smart leveransmodell</li>
+            <li style="margin-bottom:1rem;">✅ Framtidssäker med AI-stöd</li>
+            <li style="margin-bottom:1rem;">✅ Sparar tid, pengar och miljö – utan kompromisser</li>
+          </ul>
+        </div>
       </section>
     </div>
     <div id="section-en" style="display:none;">
-      <section style="padding: 3rem 1rem; background-color: #f7f7f7;">
-        <!-- Englanti-sisältö -->
-      </section>
-    </div>
-  </div>
-
-  <script>
-    // Olemassa oleva setLanguage()-funktio
-
-    // Vain uusi switchLang()
-    function switchLang(lang) {
-      ['fi','sv','en'].forEach(l => {
-        document.getElementById('section-' + l).style.display = (l === lang) ? 'block' : 'none';
-      });
-      setLanguage(lang);
-    }
-
-    // Headerin lippujen onclick="switchLang('fi'|...)" pitää olla valmiina
-  </script>
-</body>
-</html>
+      <section>
+        <div style="max-width:1000px;margin:0 auto;text-align:center;">
+          <h2 style="font-size:2rem;margin-bottom:1rem;">Why AitoGo?</h2>
+          <p style="font-size:1.1rem;color:#444;margin-bottom:2rem;">Reliable. Smart. Efficient.</p>
+          <ul style="list-style:none;padding:0;max-width:700px;margin:0 auto;text-align:left;">
+            <li style="margin-bottom:1rem;">✅ Built specifically for B2B – not for consumers</li>
