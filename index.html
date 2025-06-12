@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
   <style>
+    /* Perusasetukset */
     body { margin:0; font-family:Arial,sans-serif; color:#333; }
     a { color:#0057b7; text-decoration:none; }
     a:hover { text-decoration:underline; }
@@ -18,16 +19,13 @@
 
     .brand-row {
       display:flex; align-items:center; justify-content:space-between;
-      padding:8px 16px; flex-wrap:wrap;
+      padding:8px 16px;
     }
     .brand-row .brand {
       display:flex; align-items:center; gap:8px;
     }
-    .brand-row .brand img:first-child {
-      height:40px !important; /* pienennetty G-logo */
-      width:auto;
-    }
-    .brand-row .brand img:last-child {
+    /* Tämä varmistaa molemmille kuville 50px korkeus */
+    .brand-row .brand img {
       height:50px !important;
       width:auto;
     }
@@ -40,7 +38,7 @@
 
     /* NAV */
     nav {
-      background:#0057b7; display:flex; gap:16px; padding:8px 16px; flex-wrap:wrap;
+      background:#0057b7; display:flex; gap:16px; padding:8px 16px;
     }
     .dropdown { position:relative; }
     .dropbtn {
@@ -91,17 +89,8 @@
 
     /* FOOTER */
     footer {
-      background:#0057b7; text-align:center; padding:16px;
-      font-size:0.85rem; color:#000;
-    }
-
-    /* RESPONSIVE */
-    @media screen and (max-width: 768px) {
-      .brand-row, nav {
-        flex-direction:column; align-items:center;
-      }
-      .lang-row { justify-content:center; margin-top:8px; }
-      .dropdown { width:100%; text-align:center; }
+      background:#e8e8e8; text-align:center; padding:16px;
+      font-size:0.85rem; color:#555;
     }
   </style>
 </head>
@@ -162,8 +151,70 @@
   <footer id="footer-text"></footer>
 
   <script>
-    // translation logiikka pysyy muuttumattomana
-  </script>
+    const translations = {
+      fi: {
+        products: ["Lahjakortit","Vaatteet","Kynät","Kupit","Muki & pad","Pakkaukset","Ekotuotteet"],
+        themes: ["Vastuullisuus","Premium Choice","Blogi"],
+        services: ["Prosessikonsultointi","Tuotannon tarvikkeet","Pienkoneet ja laitteet"],
+        hero: "AitoGo yhdistää on-demand-liikelahjat ja lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata.",
+        tagline: "AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.",
+        cta: "Ota yhteyttä",
+        phone: "+358 00 000 0000",
+        chat: "Aloita chat niin autamme sinua.",
+        announce: "Kiitos kun vierailit sivuillamme! Sivumme ovat vielä työn alla, mutta palaamme pian ajankohtaisella tiedolla. Pysykää kuulolla!",
+        searchPlaceholder: "Mitä etsit?",
+        footer: "© 2025 AitoGo Oy | Kaikki oikeudet pidätetään."
+      },
+      se: {
+        products: ["Presentkort","Kläder","Pennor","Kupit","Mugg & pad","Förpackningar","Ekoprodukter"],
+        themes: ["Hållbarhet","Premiumval","Blogg"],
+        services: ["Processkonsultation","Produktionstillbehör","Lätta maskiner och utrustning"],
+        hero: "AitoGo förenar on-demand-företagsgåvor med lean-expertis—lagerfritt, tidsbesparande och svinnfritt.",
+        tagline: "AitoGo – Gåvor. Processer. Automation. Hållbarhet.",
+        cta: "Kontakta oss",
+        phone: "+358 00 000 0000",
+        chat: "Starta en chatt så hjälper vi dig.",
+        announce: "Tack för ditt besök! Vår webbplats är under uppbyggnad, men vi är snart tillbaka med uppdateringar. Håll utkik!",
+        searchPlaceholder: "Vad letar du efter?",
+        footer: "© 2025 AitoGo Oy | Alla rättigheter förbehållna."
+      },
+      en: {
+        products: ["Gift Cards","Apparel","Pens","Cups","Mugs & pads","Packaging","Eco Products"],
+        themes: ["Sustainability","Premium Choice","Blog"],
+        services: ["Process Consulting","Production Supplies","Small Machines & Equipment"],
+        hero: "AitoGo combines on-demand corporate gifting with lean-process expertise—stock-free, time-saving and waste-free.",
+        tagline: "AitoGo – Gifts. Processes. Automation. Sustainability.",
+        cta: "Contact us",
+        phone: "+358 00 000 0000",
+        chat: "Start a chat and we’ll help you.",
+        announce: "Thank you for visiting! Our site is still under construction, but we’ll be back soon with updates. Stay tuned!",
+        searchPlaceholder: "What are you looking for?",
+        footer: "© 2025 AitoGo Oy | All rights reserved."
+      }
+    };
 
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      const t = translations[lang];
+      document.getElementById("dropdown-products").innerHTML = t.products.map(i=>`<a href="#">${i}</a>`).join("");
+      document.getElementById("dropdown-themes").innerHTML   = t.themes.map(i=>`<a href="#">${i}</a>`).join("");
+      document.getElementById("dropdown-services").innerHTML = t.services.map(i=>`<a href="#">${i}</a>`).join("");
+
+      document.getElementById("menu-products").innerText = {fi:"Tuotteet",se:"Produkter",en:"Products"}[lang];
+      document.getElementById("menu-themes").innerText   = {fi:"Teemat",se:"Teman",en:"Themes"}[lang];
+      document.getElementById("menu-services").innerText = {fi:"Palvelut",se:"Tjänster",en:"Services"}[lang];
+
+      document.getElementById("hero-text").innerText      = t.hero;
+      document.getElementById("tagline").innerText        = t.tagline;
+      document.getElementById("cta-button").innerText     = t.cta;
+      document.getElementById("phone").innerText          = t.phone;
+      document.getElementById("chat").innerText           = t.chat;
+      document.getElementById("announcement").innerText   = t.announce;
+      document.getElementById("footer-text").innerText    = t.footer;
+      document.getElementById("search-input").placeholder = t.searchPlaceholder;
+    }
+
+    setLanguage("fi");
+  </script>
 </body>
 </html>
