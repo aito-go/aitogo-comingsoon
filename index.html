@@ -1,210 +1,124 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #333; background: #fff; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #fff; }
+    .logo-container { display: flex; align-items: center; }
+    .logo-container img { height: 60px; }
+    .logo-text-img { height: 60px; margin-left: 10px; }
+    .social-icons, .language-switcher { display: flex; align-items: center; gap: 10px; }
+    .social-icons img, .language-switcher img { width: 24px; height: 24px; }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: white;
-        }
+    nav { background: #0055cc; display: flex; justify-content: center; gap: 30px; padding: 10px 0; }
+    nav > .dropdown { position: relative; }
+    nav button { background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 8px; }
+    nav .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #ccc; min-width: 160px; z-index: 100; }
+    nav .dropdown-content a { display: block; padding: 8px 12px; color: #0055cc; text-decoration: none; }
+    nav .dropdown:hover .dropdown-content { display: block; }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+    .search-bar { display: flex; justify-content: center; padding: 20px; }
+    .search-bar input { width: 80%; max-width: 500px; padding: 10px; border-radius: 8px; border: 1px solid #ccc; background: #f2f2f2; }
 
-        .logo-container img {
-            height: 60px;
-        }
+    main { text-align: center; padding: 20px; }
+    .highlight { font-weight: bold; color: #0055cc; font-size: 1.25rem; margin: 15px 0; }
+    button.cta { padding: 10px 20px; background: #0055cc; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; }
 
-        .logo-text {
-            font-size: 24px;
-            margin-left: 10px;
-            font-weight: bold;
-            color: #003399;
-        }
+    .contact-box { background: #f9f9f9; margin: 30px auto; padding: 20px; max-width: 600px; border-radius: 8px; font-size: 1rem; }
+    .contact-box span.icon { margin-right: 8px; vertical-align: middle; }
 
-        .social-icons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+    #announcement { background: #ffecb3; color: #444; text-align: center; font-weight: bold; padding: 15px; margin: 30px; animation: fadeInOut 6s ease-in-out infinite; }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.5; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
 
-        .social-icons img {
-            width: 24px;
-            height: 24px;
-        }
+    footer { background: #0055cc; color: #fff; text-align: center; padding: 20px; font-size: 0.9rem; }
 
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 20px;
-        }
-
-        nav {
-            background-color: #0055cc;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 10px 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            margin: 20px;
-        }
-
-        .search-bar input {
-            width: 80%;
-            max-width: 500px;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            background-color: #f2f2f2;
-        }
-
-        main {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .highlight {
-            font-weight: bold;
-            color: #0055cc;
-            font-size: 20px;
-            margin-top: 10px;
-        }
-
-        .contact-box {
-            background-color: #f9f9f9;
-            margin: 30px auto;
-            padding: 20px;
-            max-width: 600px;
-            border-radius: 8px;
-        }
-
-        .banner {
-            background-color: #ffecb3;
-            color: #444;
-            text-align: center;
-            font-weight: bold;
-            padding: 15px;
-            margin: 30px 0;
-        }
-
-        footer {
-            background-color: #0055cc;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .social-icons {
-                flex-direction: row;
-                justify-content: flex-end;
-            }
-
-            .language-switcher {
-                margin-top: 10px;
-                justify-content: flex-end;
-            }
-
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .logo-text {
-                font-size: 20px;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .search-bar input {
-                width: 90%;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .social-icons, .language-switcher { justify-content: flex-start; margin-top: 8px; }
+      nav { flex-direction: column; align-items: center; }
+      .search-bar input { width: 90%; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="AitoGo logo">
-            <div class="logo-text">AitoGo<br><small>aito-go.com</small></div>
-        </div>
-        <div>
-            <div class="social-icons">
-                <img src="linkedin.png" alt="LinkedIn">
-                <img src="instagram.png" alt="Instagram">
-                <img src="tiktok.png" alt="TikTok">
-                <img src="facebook.png" alt="Facebook">
-                <img src="youtube.png" alt="YouTube">
-            </div>
-            <div class="language-switcher">
-                <img src="fi.png" alt="FI" width="20"> FI
-                <img src="se.png" alt="SE" width="20"> SE
-                <img src="en.png" alt="EN" width="20"> EN
-            </div>
-        </div>
-    </header>
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="AitoGo symbol logo">
+      <img src="Logotext.png" alt="AitoGo text logo" class="logo-text-img">
+    </div>
+    <div>
+      <div class="social-icons">
+        <img src="linkedin.png" alt="LinkedIn">
+        <img src="instagram.png" alt="Instagram">
+        <img src="tiktok.png" alt="TikTok">
+        <img src="facebook.png" alt="Facebook">
+        <img src="youtube.png" alt="YouTube">
+      </div>
+      <div class="language-switcher">
+        <img src="fi.png" alt="FI"><span>FI</span>
+        <img src="se.png" alt="SE"><span>SE</span>
+        <img src="en.png" alt="EN"><span>EN</span>
+      </div>
+    </div>
+  </header>
 
-    <nav>
-        <a href="#">Tuotteet</a>
-        <a href="#">Teemat</a>
-        <a href="#">Palvelut</a>
-    </nav>
+  <nav>
+    <div class="dropdown">
+      <button id="menu-products">Tuotteet</button>
+      <div class="dropdown-content" id="dropdown-products">
+        <a href="#">Lahjakortit</a>
+        <a href="#">Vaatteet</a>
+        <a href="#">Kynät</a>
+        <a href="#">Kupit</a>
+        <a href="#">Muki & pad</a>
+        <a href="#">Pakkaukset</a>
+        <a href="#">Ekotuotteet</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button id="menu-themes">Teemat</button>
+      <div class="dropdown-content" id="dropdown-themes">
+        <a href="#">Vastuullisuus</a>
+        <a href="#">Premium Choice</a>
+        <a href="#">Blogi</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button id="menu-services">Palvelut</button>
+      <div class="dropdown-content" id="dropdown-services">
+        <a href="#">Prosessikonsultointi</a>
+        <a href="#">Tuotannon tarvikkeet</a>
+        <a href="#">Pienkoneet ja laitteet</a>
+      </div>
+    </div>
+  </nav>
 
-    <div class="search-bar">
-        <input type="text" placeholder="Mitä etsit?">
+  <div class="search-bar">
+    <input type="text" placeholder="Mitä etsit?">
+  </div>
+
+  <main>
+    <p>AitoGo yhdistää on-demand-liikelahjat ja lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata.</p>
+    <div class="highlight">AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</div>
+    <div style="margin-top:20px;">
+      <button class="cta" onclick="window.location.href='mailto:aitogo.info@gmail.com'">Ota yhteyttä</button>
+    </div>
+    <div class="contact-box">
+      <span class="icon">📞</span>+358 00 000 0000<br>
+      <span class="icon">💬</span>Aloita chat niin autamme sinua.
     </div>
 
-    <main>
-        <p>
-            AitoGo yhdistää on-demand-liikelahjat ja lean-prosessien asiantuntemuksen –
-            varastotonta, ajansäästöä tuovaa ja hävikkivapaata.
-        </p>
-        <div class="highlight">AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</div>
-        <div style="margin-top: 20px;">
-            <button style="padding: 10px 20px; background-color: #0055cc; color: white; border: none; border-radius: 6px; font-size: 16px;">
-                Ota yhteyttä
-            </button>
-        </div>
-        <div class="contact-box">
-            📞 +358 00 000 0000<br>
-            💬 Aloita chat niin autamme sinua.
-        </div>
-        <div class="banner">
-            Kiitos kun vierailit sivuillamme! Sivumme ovat vielä työn alla, mutta palaamme pian ajankohtaisella tiedolla. Pysykää kuulolla!
-        </div>
-    </main>
+    <div id="announcement">Kiitos kun vierailit sivuillamme! Sivumme ovat vielä työn alla, mutta palaamme pian ajankohtaisella tiedolla. Pysykää kuulolla!</div>
+  </main>
 
-    <footer>
-        © 2025 AitoGo | Kaikki oikeudet pidätetään.
-    </footer>
+  <footer>© 2025 AitoGo Oy | Kaikki oikeudet pidätetään.</footer>
 
 </body>
 </html>
