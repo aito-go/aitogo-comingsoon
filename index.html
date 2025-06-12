@@ -1,162 +1,31 @@
-<!DOCTYPE html>
-<html lang="fi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
-  <style>
-    /* Perusasetukset */
-    body { margin:0; font-family:Arial,sans-serif; color:#333; }
-    a { color:#0057b7; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-
-    /* HEADER */
-    .social-row { display:flex; justify-content:flex-end; gap:10px; padding:8px 16px; background:#fafafa; }
-    .social-row img { width:24px; height:24px; }
-
-    .brand-row { display:flex; align-items:center; justify-content:space-between; padding:8px 16px; }
-    .brand-row .brand { display:flex; align-items:center; gap:8px; }
-    .brand-row .brand img { height:50px !important; width:auto; }
-
-    .lang-row { display:flex; align-items:center; gap:8px; }
-    .lang-row img { width:24px; height:16px; cursor:pointer; }
-    .lang-row span { font-size:0.85rem; }
-
-    /* NAV */
-    nav { background:#0057b7; display:flex; gap:16px; padding:8px 16px; }
-    .dropdown { position:relative; }
-    .dropbtn { background:none; border:none; color:#fff; font-size:1rem; cursor:pointer; padding:8px; }
-    .dropdown-content { display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid #ccc; min-width:160px; z-index:10; }
-    .dropdown-content a { display:block; padding:8px 12px; color:#0057b7; }
-    .dropdown:hover .dropdown-content { display:block; }
-
-    /* SEARCH */
-    .search-bar { background:#f3f3f3; padding:16px; text-align:center; }
-    .search-bar input { width:80%; max-width:400px; padding:8px 12px; border:1px solid #ccc; border-radius:8px; font-size:1rem; }
-
-    /* MAIN */
-    main { padding:32px 16px; text-align:center; }
-    main p { font-size:1rem; line-height:1.5; }
-    main h2 { color:#0057b7; font-size:1.4rem; margin:16px 0; }
-    button.cta { padding:10px 20px; background:#0057b7; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:1rem; }
-
-    /* CONTACT */
-    #contact { background:#f5f5f5; padding:24px 16px; text-align:center; }
-    #contact div { margin:8px 0; font-size:1rem; }
-    .icon { margin-right:8px; vertical-align:middle; }
-
-    /* ANNOUNCEMENT */
-    #announcement { background:#fffae6; padding:16px; text-align:center; margin-top:32px; animation:fadeInOut 6s ease-in-out infinite; }
-    @keyframes fadeInOut { 0%,100% { opacity:0.5; transform:scale(0.98); } 50% { opacity:1; transform:scale(1.02); } }
-
-    /* FOOTER */
-    footer { background:#e8e8e8; text-align:center; padding:16px; font-size:0.85rem; color:#555; }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="social-row">
-      <img src="linkedin.png" alt="LinkedIn">
-      <img src="instagram.png" alt="Instagram">
-      <img src="tiktok.png" alt="TikTok">
-      <img src="facebook.png" alt="Facebook">
-      <img src="youtube.png" alt="YouTube">
+<!-- Lisätty Loop-analyysien osio (B2B-prosesseihin liittyvät visuaalit) -->
+<section class="loop-analysis">
+  <div class="loop-container">
+    <div class="loop-item">
+      <img src="images/circular_supply_chain.png" alt="Kiertotalouden toimitusketju ja kierrätysprosessi">
+      <h3>
+        <span class="lang-fi">Kiertotalouden toimitusketju</span>
+        <span class="lang-sv" style="display:none;">Cirkulär leveranskedja</span>
+        <span class="lang-en" style="display:none;">Circular Supply Chain</span>
+      </h3>
+      <p>
+        <span class="lang-fi">AitoGo mahdollistaa käytettyjen koneiden tehokkaan uudelleenkäytön ja kierrätyksen. Tarjoamme B2B-asiakkaille räätälöityjä kiertotalousratkaisuja, jotka optimoivat tuotanto- ja toimitusprosessin ja samalla minimoivat ympäristövaikutukset.</span>
+        <span class="lang-sv" style="display:none;">AitoGo möjliggör effektiv återanvändning och återvinning av begagnad maskinutrustning. Vi erbjuder B2B-kunder skräddarsydda cirkulära leveranskedjelösningar som optimerar produktions- och leveransprocesserna samtidigt som vi minimerar miljöpåverkan.</span>
+        <span class="lang-en" style="display:none;">AitoGo enables efficient reuse and recycling of used machinery. We provide B2B customers with tailored circular supply chain solutions that optimize production and delivery processes while minimizing environmental impact.</span>
+      </p>
     </div>
-    <div class="brand-row">
-      <div class="brand">
-        <img src="logo.png" alt="AitoGo symbol logo">
-        <img src="Logotext.png" alt="AitoGo logo ja teksti">
-      </div>
-      <div class="lang-row">
-        <img src="fi.png" alt="FI" onclick="switchLang('fi')"><span>FI</span>
-        <img src="se.png" alt="SE" onclick="switchLang('sv')"><span>SE</span>
-        <img src="en.png" alt="EN" onclick="switchLang('en')"><span>EN</span>
-      </div>
+    <div class="loop-item">
+      <img src="images/data_analysis_optimization.png" alt="Reaaliaikaisen datan analyysi ja prosessien optimointi">
+      <h3>
+        <span class="lang-fi">Älykäs analytiikka ja jatkuva parannus</span>
+        <span class="lang-sv" style="display:none;">Intelligent analys och ständig förbättring</span>
+        <span class="lang-en" style="display:none;">Intelligent Analytics and Continuous Improvement</span>
+      </h3>
+      <p>
+        <span class="lang-fi">AitoGo kerää ja analysoi dataa reaaliaikaisesti, mikä tuo läpinäkyvyyttä toimitusketjun jokaiseen vaiheeseen. Jatkuvan dataseurannan avulla voimme tunnistaa parannuskohteet ja optimoida tuotannon tehokkuutta kunkin asiakkaan tarpeisiin.</span>
+        <span class="lang-sv" style="display:none;">AitoGo samlar in och analyserar data i realtid, vilket ger insyn i varje led av leveranskedjan. Genom kontinuerlig datainsamling kan vi identifiera förbättringsområden och optimera produktionseffektiviteten utifrån varje kunds behov.</span>
+        <span class="lang-en" style="display:none;">AitoGo collects and analyzes data in real time, providing visibility into every stage of the supply chain. Through continuous data collection, we can identify areas for improvement and optimize production efficiency according to each client’s needs.</span>
+      </p>
     </div>
-  </header>
-
-  <nav>
-    <div class="dropdown">
-      <button class="dropbtn" id="menu-products"></button>
-      <div class="dropdown-content" id="dropdown-products"></div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn" id="menu-themes"></button>
-      <div class="dropdown-content" id="dropdown-themes"></div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn" id="menu-services"></button>
-      <div class="dropdown-content" id="dropdown-services"></div>
-    </div>
-  </nav>
-
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="">
   </div>
-
-  <main>
-    <p id="hero-text"></p>
-    <h2 id="tagline"></h2>
-    <button class="cta" id="cta-button" onclick="window.location.href='mailto:aitogo.info@gmail.com'"></button>
-    <div id="contact">
-      <div><span class="icon">📞</span><span id="phone"></span></div>
-      <div><span class="icon">💬</span><span id="chat"></span></div>
-    </div>
-  </main>
-
-  <div id="announcement"></div>
-
-  <!-- Miksi AitoGo -osio kolmikielisenä -->
-  <div id="miksi-aitogo">
-    <div id="section-fi">
-      <section>
-        <h2>Miksi AitoGo?</h2>
-        <p>Luotettava. Fiksu. Tehokas.</p>
-        <ul>
-          <li>✅ Kehitetty aidosti B2B-tarpeisiin, ei kuluttajille</li>
-          <li>✅ Automatisoitu tuotanto- ja toimitusketju – toimii myös skaalatessa</li>
-          <li>✅ Jäljitettävä, räätälöity ja älykäs toimitusmalli</li>
-          <li>✅ Yhteensopiva tulevaisuuden AI-työkalujen kanssa</li>
-          <li>✅ Säästää aikaa, rahaa ja ympäristöä – ilman kompromisseja</li>
-        </ul>
-      </section>
-    </div>
-    <div id="section-sv" style="display:none;"><section>
-        <h2>Varför AitoGo?</h2>
-        <p>Pålitlig. Smart. Effektiv.</p>
-        <ul>
-          <li>✅ Utvecklad för B2B – inte för konsumentmarknaden</li>
-          <li>✅ Automatiserad produktion och leveranskedja – redo för tillväxt</li>
-          <li>✅ Spårbar, skräddarsydd och smart leveransmodell</li>
-          <li>✅ Framtidssäker med AI-stöd</li>
-          <li>✅ Sparar tid, pengar och miljö – utan kompromisser</li>
-        </ul>
-      </section>
-    </div>
-    <div id="section-en" style="display:none;"><section>
-        <h2>Why AitoGo?</h2>
-        <p>Reliable. Smart. Efficient.</p>
-        <ul>
-          <li>✅ Built specifically for B2B – not for consumers</li>
-          <li>✅ Automated production and delivery chain – scalable by design</li>
-          <li>✅ Trackable, tailored and intelligent delivery model</li>
-          <li>✅ Ready for AI-powered future workflows</li>
-          <li>✅ Saves time, money and the environment – no compromises</li>
-        </ul>
-      </section>
-    </div>
-
-  <footer id="footer-text"></footer>
-
-  <script>
-    const translations = { /* ... */ };
-    function setLanguage(lang) { /* ... */ }
-    function switchLang(lang) {
-      ['fi','sv','en'].forEach(l=>document.getElementById('section-'+l).style.display = l===lang?'block':'none');
-      setLanguage(lang);
-    }
-    setLanguage('fi');
-  </script>
-</body>
-</html>
+</section>
