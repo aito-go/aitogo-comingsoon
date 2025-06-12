@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.</title>
   <style>
-    /* Perusasetukset */
     body { margin:0; font-family:Arial,sans-serif; color:#333; }
     a { color:#0057b7; text-decoration:none; }
     a:hover { text-decoration:underline; }
 
-    /* HEADER */
     .social-row {
       display:flex; justify-content:flex-end; gap:10px;
       padding:8px 16px; background:#fafafa;
@@ -24,10 +22,8 @@
     .brand-row .brand {
       display:flex; align-items:center; gap:8px;
     }
-    /* Tämä varmistaa molemmille kuville 50px korkeus */
     .brand-row .brand img {
-      height:50px !important;
-      width:auto;
+      height:50px; width:auto;
     }
 
     .lang-row {
@@ -36,7 +32,6 @@
     .lang-row img { width:24px; height:16px; cursor:pointer; }
     .lang-row span { font-size:0.85rem; }
 
-    /* NAV */
     nav {
       background:#0057b7; display:flex; gap:16px; padding:8px 16px;
     }
@@ -52,18 +47,16 @@
     .dropdown-content a {
       display:block; padding:8px 12px; color:#0057b7;
     }
-    .dropdown:hover .dropdown-content {
-      display:block;
-    }
+    .dropdown:hover .dropdown-content { display:block; }
 
-    /* SEARCH */
-    .search-bar { background:#f3f3f3; padding:16px; text-align:center; }
+    .search-bar {
+      background:#e9f0ff; padding:16px; text-align:center;
+    }
     .search-bar input {
       width:80%; max-width:400px; padding:8px 12px;
-      border:1px solid #ccc; border-radius:8px; font-size:1rem;
+      border:1px solid #ccc; border-radius:10px; font-size:1rem;
     }
 
-    /* MAIN */
     main { padding:32px 16px; text-align:center; }
     main p { font-size:1rem; line-height:1.5; }
     main h2 { color:#0057b7; font-size:1.4rem; margin:16px 0; }
@@ -72,12 +65,10 @@
       border-radius:4px; cursor:pointer; font-size:1rem;
     }
 
-    /* CONTACT */
     #contact { background:#f5f5f5; padding:24px 16px; text-align:center; }
     #contact div { margin:8px 0; font-size:1rem; }
     .icon { margin-right:8px; vertical-align:middle; }
 
-    /* ANNOUNCEMENT */
     #announcement {
       background:#fffae6; padding:16px; text-align:center; margin-top:32px;
       animation:fadeInOut 6s ease-in-out infinite;
@@ -87,10 +78,15 @@
       50%    { opacity:1;   transform:scale(1.02); }
     }
 
-    /* FOOTER */
     footer {
       background:#e8e8e8; text-align:center; padding:16px;
       font-size:0.85rem; color:#555;
+    }
+
+    @media (max-width: 600px) {
+      .social-row, .brand-row, nav { flex-direction:column; align-items:flex-start; }
+      .brand-row { gap:8px; }
+      .lang-row { justify-content:flex-start; }
     }
   </style>
 </head>
