@@ -13,7 +13,7 @@
       display:flex; justify-content:flex-end; gap:10px;
       padding:8px 16px; background:#fafafa;
     }
-    .social-row img { width:24px; height:24px; }
+    .social-row img { width:24px; height:24px; cursor:pointer; }
 
     .brand-row {
       display:flex; align-items:center; justify-content:space-between;
@@ -106,9 +106,9 @@
         <img src="Logotext.png" alt="AitoGo logo ja teksti">
       </div>
       <div class="lang-row">
-        <img src="fi.png" alt="FI" onclick="setLanguage('fi')"><span>FI</span>
-        <img src="se.png" alt="SE" onclick="setLanguage('se')"><span>SE</span>
-        <img src="en.png" alt="EN" onclick="setLanguage('en')"><span>EN</span>
+        <img src="fi.png" alt="FI" onclick="switchLang('fi')"><span>FI</span> |
+        <img src="se.png" alt="SE" onclick="switchLang('sv')"><span>SE</span> |
+        <img src="en.png" alt="EN" onclick="switchLang('en')"><span>EN</span>
       </div>
     </div>
   </header>
@@ -144,73 +144,73 @@
 
   <div id="announcement"></div>
 
+  <!-- Miksi AitoGo -osio kolmikielisenä -->
+  <div id="miksi-aitogo">
+    <div id="section-fi">
+      <section style="padding: 3rem 1rem; background-color: #f7f7f7;">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem;">Miksi AitoGo?</h2>
+          <p style="font-size: 1.1rem; color: #444; margin-bottom: 2rem;">Luotettava. Fiksu. Tehokas.</p>
+          <ul style="list-style-type: none; padding: 0; max-width: 700px; margin: 0 auto; text-align: left;">
+            <li style="margin-bottom: 1rem;">✅ Kehitetty aidosti B2B-tarpeisiin, ei kuluttajille</li>
+            <li style="margin-bottom: 1rem;">✅ Automatisoitu tuotanto- ja toimitusketju – toimii myös skaalatessa</li>
+            <li style="margin-bottom: 1rem;">✅ Jäljitettävä, räätälöity ja älykäs toimitusmalli</li>
+            <li style="margin-bottom: 1rem;">✅ Yhteensopiva tulevaisuuden AI-työkalujen kanssa</li>
+            <li style="margin-bottom: 1rem;">✅ Säästää aikaa, rahaa ja ympäristöä – ilman kompromisseja</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <div id="section-sv" style="display:none;">
+      <section style="padding: 3rem 1rem; background-color: #f7f7f7;">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem;">Varför AitoGo?</h2>
+          <p style="font-size: 1.1rem; color: #444; margin-bottom: 2rem;">Pålitlig. Smart. Effektiv.</p>
+          <ul style="list-style-type: none; padding: 0; max-width: 700px; margin: 0 auto; text-align: left;">
+            <li style="margin-bottom: 1rem;">✅ Utvecklad för B2B – inte för konsumentmarknaden</li>
+            <li style="margin-bottom: 1rem;">✅ Automatiserad produktion och leveranskedja – redo för tillväxt</li>
+            <li style="margin-bottom: 1rem;">✅ Spårbar, skräddarsydd och smart leveransmodell</li>
+            <li style="margin-bottom: 1rem;">✅ Framtidssäker med AI-stöd</li>
+            <li style="margin-bottom: 1rem;">✅ Sparar tid, pengar ja miljö – utan kompromisser</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <div id="section-en" style="display:none;">
+      <section style="padding: 3rem 1rem; background-color: #f7f7f7;">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem;">Why AitoGo?</h2>
+          <p style="font-size: 1.1rem; color: #444; margin-bottom: 2rem;">Reliable. Smart. Efficient.</p>
+          <ul style="list-style-type: none; padding: 0; max-width: 700px; margin: 0 auto; text-align: left;">
+            <li style="margin-bottom: 1rem;">✅ Built specifically for B2B – not for consumers</li>
+            <li style="margin-bottom: 1rem;">✅ Automated production and delivery chain – scalable by design</li>
+            <li style="margin-bottom: 1rem;">✅ Trackable, tailored and intelligent delivery model</li>
+            <li style="margin-bottom: 1rem;">✅ Ready for AI-powered future workflows</li>
+            <li style="margin-bottom: 1rem;">✅ Saves time, money ja the environment – no compromises</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
   <footer id="footer-text"></footer>
 
   <script>
-    const translations = {
-      fi: {
-        products: ["Lahjakortit","Vaatteet","Kynät","Kupit","Muki & pad","Pakkaukset","Ekotuotteet"],
-        themes: ["Vastuullisuus","Premium Choice","Blogi"],
-        services: ["Prosessikonsultointi","Tuotannon tarvikkeet","Pienkoneet ja laitteet"],
-        hero: "AitoGo yhdistää on-demand-liikelahjat ja lean-prosessien asiantuntemuksen – varastotonta, ajansäästöä tuovaa ja hävikkivapaata.",
-        tagline: "AitoGo – Lahjat. Prosessit. Automaatio. Kestävyys.",
-        cta: "Ota yhteyttä",
-        phone: "+358 00 000 0000",
-        chat: "Aloita chat niin autamme sinua.",
-        announce: "Kiitos kun vierailit sivuillamme! Sivumme ovat vielä työn alla, mutta palaamme pian ajankohtaisella tiedolla. Pysykää kuulolla!",
-        searchPlaceholder: "Mitä etsit?",
-        footer: "© 2025 AitoGo Oy | Kaikki oikeudet pidätetään."
-      },
-      se: {
-        products: ["Presentkort","Kläder","Pennor","Kupit","Mugg & pad","Förpackningar","Ekoprodukter"],
-        themes: ["Hållbarhet","Premiumval","Blogg"],
-        services: ["Processkonsultation","Produktionstillbehör","Lätta maskiner och utrustning"],
-        hero: "AitoGo förenar on-demand-företagsgåvor med lean-expertis—lagerfritt, tidsbesparande och svinnfritt.",
-        tagline: "AitoGo – Gåvor. Processer. Automation. Hållbarhet.",
-        cta: "Kontakta oss",
-        phone: "+358 00 000 0000",
-        chat: "Starta en chatt så hjälper vi dig.",
-        announce: "Tack för ditt besök! Vår webbplats är under uppbyggnad, men vi är snart tillbaka med uppdateringar. Håll utkik!",
-        searchPlaceholder: "Vad letar du efter?",
-        footer: "© 2025 AitoGo Oy | Alla rättigheter förbehållna."
-      },
-      en: {
-        products: ["Gift Cards","Apparel","Pens","Cups","Mugs & pads","Packaging","Eco Products"],
-        themes: ["Sustainability","Premium Choice","Blog"],
-        services: ["Process Consulting","Production Supplies","Small Machines & Equipment"],
-        hero: "AitoGo combines on-demand corporate gifting with lean-process expertise—stock-free, time-saving and waste-free.",
-        tagline: "AitoGo – Gifts. Processes. Automation. Sustainability.",
-        cta: "Contact us",
-        phone: "+358 00 000 0000",
-        chat: "Start a chat and we’ll help you.",
-        announce: "Thank you for visiting! Our site is still under construction, but we’ll be back soon with updates. Stay tuned!",
-        searchPlaceholder: "What are you looking for?",
-        footer: "© 2025 AitoGo Oy | All rights reserved."
-      }
-    };
+    const translations = { fi: { /* ... existing translations ... */ }, se: { /* ... */ }, en: { /* ... */ } };
 
     function setLanguage(lang) {
-      document.documentElement.lang = lang;
-      const t = translations[lang];
-      document.getElementById("dropdown-products").innerHTML = t.products.map(i=>`<a href="#">${i}</a>`).join("");
-      document.getElementById("dropdown-themes").innerHTML   = t.themes.map(i=>`<a href="#">${i}</a>`).join("");
-      document.getElementById("dropdown-services").innerHTML = t.services.map(i=>`<a href="#">${i}</a>`).join("");
-
-      document.getElementById("menu-products").innerText = {fi:"Tuotteet",se:"Produkter",en:"Products"}[lang];
-      document.getElementById("menu-themes").innerText   = {fi:"Teemat",se:"Teman",en:"Themes"}[lang];
-      document.getElementById("menu-services").innerText = {fi:"Palvelut",se:"Tjänster",en:"Services"}[lang];
-
-      document.getElementById("hero-text").innerText      = t.hero;
-      document.getElementById("tagline").innerText        = t.tagline;
-      document.getElementById("cta-button").innerText     = t.cta;
-      document.getElementById("phone").innerText          = t.phone;
-      document.getElementById("chat").innerText           = t.chat;
-      document.getElementById("announcement").innerText   = t.announce;
-      document.getElementById("footer-text").innerText    = t.footer;
-      document.getElementById("search-input").placeholder = t.searchPlaceholder;
+      /* ... existing setLanguage code ... */
     }
 
-    setLanguage("fi");
+    function switchLang(lang) {
+      ['fi','sv','en'].forEach(l => {
+        document.getElementById('section-' + l).style.display = (l === lang) ? 'block' : 'none';
+      });
+      setLanguage(lang);
+    }
+
+    // Aluksi suomi
+    setLanguage('fi');
   </script>
 </body>
 </html>
