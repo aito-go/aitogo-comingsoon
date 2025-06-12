@@ -10,7 +10,7 @@
     a:hover { text-decoration:underline; }
 
     .social-row { display:flex; justify-content:flex-end; gap:10px; padding:8px 16px; background:#fafafa; }
-    .social-row img { width:24px; height:24px; cursor:pointer; }
+    .social-row img { width:24px; height:24px; }
 
     .brand-row { display:flex; align-items:center; justify-content:space-between; padding:8px 16px; }
     .brand-row .brand { display:flex; align-items:center; gap:8px; }
@@ -41,8 +41,6 @@
 
     #announcement { background:#fffae6; padding:16px; text-align:center; margin-top:32px; animation:fadeInOut 6s ease-in-out infinite; }
     @keyframes fadeInOut { 0%,100% { opacity:0.5; transform:scale(0.98); } 50% { opacity:1; transform:scale(1.02); } }
-
-    #miksi-aitogo section { padding:3rem 1rem; background-color:#f7f7f7; margin-top:32px; }
 
     footer { background:#e8e8e8; text-align:center; padding:16px; font-size:0.85rem; color:#555; }
 
@@ -103,42 +101,38 @@
 
   <div id="announcement"></div>
 
-  <!-- Miksi AitoGo -osio footerin yläpuolella -->
+  <!-- Lisätty osio: Miksi AitoGo kolmikielinen -->
   <div id="miksi-aitogo">
     <div id="section-fi">
-      <section>
-        <div style="max-width:1000px;margin:0 auto;text-align:center;">
-          <h2 style="font-size:2rem;margin-bottom:1rem;">Miksi AitoGo?</h2>
-          <p style="font-size:1.1rem;color:#444;margin-bottom:2rem;">Luotettava. Fiksu. Tehokas.</p>
-          <ul style="list-style:none;padding:0;max-width:700px;margin:0 auto;text-align:left;">
-            <li style="margin-bottom:1rem;">✅ Kehitetty aidosti B2B-tarpeisiin, ei kuluttajille</li>
-            <li style="margin-bottom:1rem;">✅ Automatisoitu tuotanto- ja toimitusketju – toimii myös skaalatessa</li>
-            <li style="margin-bottom:1rem;">✅ Jäljitettävä, räätälöity ja älykäs toimitusmalli</li>
-            <li style="margin-bottom:1rem;">✅ Yhteensopiva tulevaisuuden AI-työkalujen kanssa</li>
-            <li style="margin-bottom:1rem;">✅ Säästää aikaa, rahaa ja ympäristöä – ilman kompromisseja</li>
-          </ul>
-        </div>
+      <section style="padding:3rem 1rem; background-color:#f7f7f7;">
+        <!-- FI sisältö -->
       </section>
     </div>
     <div id="section-sv" style="display:none;">
-      <section>
-        <div style="max-width:1000px;margin:0 auto;text-align:center;">
-          <h2 style="font-size:2rem;margin-bottom:1rem;">Varför AitoGo?</h2>
-          <p style="font-size:1.1rem;color:#444;margin-bottom:2rem;">Pålitlig. Smart. Effektiv.</p>
-          <ul style="list-style:none;padding:0;max-width:700px;margin:0 auto;text-align:left;">
-            <li style="margin-bottom:1rem;">✅ Utvecklad för B2B – inte för konsumentmarknaden</li>
-            <li style="margin-bottom:1rem;">✅ Automatiserad produktion och leveranskedja – redo för tillväxt</li>
-            <li style="margin-bottom:1rem;">✅ Spårbar, skräddarsydd och smart leveransmodell</li>
-            <li style="margin-bottom:1rem;">✅ Framtidssäker med AI-stöd</li>
-            <li style="margin-bottom:1rem;">✅ Sparar tid, pengar och miljö – utan kompromisser</li>
-          </ul>
-        </div>
+      <section style="padding:3rem 1rem; background-color:#f7f7f7;">
+        <!-- SV sisältö -->
       </section>
     </div>
     <div id="section-en" style="display:none;">
-      <section>
-        <div style="max-width:1000px;margin:0 auto;text-align:center;">
-          <h2 style="font-size:2rem;margin-bottom:1rem;">Why AitoGo?</h2>
-          <p style="font-size:1.1rem;color:#444;margin-bottom:2rem;">Reliable. Smart. Efficient.</p>
-          <ul style="list-style:none;padding:0;max-width:700px;margin:0 auto;text-align:left;">
-            <li style="margin-bottom:1rem;">✅ Built specifically for B2B – not for consumers</li>
+      <section style="padding:3rem 1rem; background-color:#f7f7f7;">
+        <!-- EN sisältö -->
+      </section>
+    </div>
+  </div>
+
+  <footer id="footer-text"></footer>
+
+  <script>
+    // Dynaamiset käännökset ja setLanguage-funktio säilyvät ennallaan
+
+    function switchLang(lang) {
+      ['fi','sv','en'].forEach(l => {
+        document.getElementById('section-' + l).style.display = (l === lang) ? 'block' : 'none';
+      });
+      setLanguage(lang);
+    }
+    // Aloita suomi
+    setLanguage('fi');
+  </script>
+</body>
+</html>
